@@ -3,27 +3,33 @@
 </head>
 <body>
 
-    <h1>Hejsan svejsan</h1>
+    <h1>Hejsan svejsan. Ta o gissa nu</h1>
+    <input type="text" name="guess" autocomplete="off">
 
 
+<p></p>
 
 <script>
-    let num = 5;
+    let num = Math.round(Math.random() * 10);
+    let el = document.querySelector('input');
+    let p = document.querySelector('p');
     let guess = 0;
-    while(guess != num) { //  ! =         ==
-        guess = prompt('gissa på ett tal');
 
-        if (guess == num) {
-            alert('Du gissade rätt');
-        }else if (guess > num) {
-            alert('gissningen är för stor');
-        } else if (guess < num) {
-            alert('gissnignen är för litten');
+el.addEventListener('change', function() {
+    guess += 1;
+        if (el.value == num) {
+            p.textContent = 'Du gissade rätt'+guess;
+        }else if (el.value > num) {
+            p.textContent = "gissningen är för stor";
+        } else if (el.value < num) {
+            p.textContent = "gissnignen är för litten";
         }else {
-            alert('Någonting gick snett');
+            p.textContent = 'Någonting gick snett';
         }
-        // if guess == num: text = 'rätt' elif guess > num: text = 'för stor' elif guess < num: text = 'för liten'
-    }
+        el.value = '';
+});
+
+
 </script>
 </body>
 </html>
